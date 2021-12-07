@@ -1,0 +1,26 @@
+<section class="login-container">
+    <h1 class="login-title">Ingresa a tu <br><span class="acento">Cuenta</span></h1>
+    <div class="form-container">
+        <form class="login-form"  [formGroup]="loginform" autocomplete="off">
+            <img src="../../../assets/lock.svg" alt="Lock Password">
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Email" required>
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+        
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="password"  placeholder="Contraseña" required>
+                <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+        
+                
+            <button class="boton-orden" (click)="login()" mat-raised-button style="background-color:#E73651">Login</button>
+            <div class="not-account">
+                <p>Aún no tienes una cuenta? <a routerLink="register"><span class="acento">Click Aquí</span></a></p>
+            </div>
+        </form>
+    </div>
+</section>

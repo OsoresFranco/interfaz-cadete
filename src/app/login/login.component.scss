@@ -1,0 +1,27 @@
+.login-title{
+    text-align: center;
+    color: white;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container{
+    margin: 70px;
+}
+
+.boton-orden{
+    text-decoration: none;
+}
+
+p{
+    margin-top: 10px;
+}
