@@ -6,6 +6,7 @@ import { LoginComponent } from './login.component';
 import { MaterialModule } from '../material/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SweetAlert2Module
   ]
 })
 export class LoginModule { }
