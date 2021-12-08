@@ -32,14 +32,12 @@ export class LoginComponent {
     this.loginservice.login (String(this.user.email), String(this.user.password)).subscribe(  resp => {
       
     if(resp.rol.id === 2){
-      console.log('Aceptado')
+      this.route.navigate(['/inicio'])
     } else {
       console.log('Error')
     }
-      // this.route.navigate(['/inicio'])
 
-
-    } )
+    })
   }
 
 }
