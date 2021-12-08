@@ -1,5 +1,24 @@
 <app-header></app-header>
 
 <main class="main-container">
-    <button>click me</button>
+    <div class="card-container">
+        <img src="../../assets/scooter.svg" alt="Scooter">
+        <h3>Viajes</h3>
+        <h4>Viajes en Curso y Nuevos Viajes</h4>
+        <button mat-raised-button>Viajes</button>
+    </div>
+
+        <div class="card-container">
+            <img src="../../assets/time-machine.svg" alt="Reloj">
+            <h3>Historial</h3>
+            <h4>Historial de mis Viajes</h4>
+            <button mat-raised-button>Historial</button>
+        </div>
 </main>
+
+
+<footer>
+    <a (click)="openBottomSheet()">
+        <img class="menu-icon" src="../../assets/menu.svg" alt="Menu-button">
+    </a>
+</footer>

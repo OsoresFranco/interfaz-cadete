@@ -1,15 +1,9 @@
-.logo-toolbar{
-    max-width: 65px;
-}
-
-.spacer{
-    flex: 1 1 auto;
-}
-
-.toolbar{
-    background-color: #C7E8F3;
-}
-
-.menu-icon{
-    color: #4376a0;
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    img{
+        max-height: 100px;
+        max-width: auto;
+    }
 }

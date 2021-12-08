@@ -29,7 +29,6 @@ export class LoginComponent {
 
   login(){
     this.user = this.loginform.value
-    console.log(this.user.email)
     this.loginservice.login (String(this.user.email), String(this.user.password)).subscribe(  resp => {
     
     if(resp.rol.id === 2){
