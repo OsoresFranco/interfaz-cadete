@@ -38,6 +38,11 @@ export class LoginComponent {
         '',
         'success')
       this.route.navigate(['/inicio'])
+    } else {
+      Swal.fire(
+        'Error al intentar ingresar',
+        'Usuario o contraseña inválido',
+        'error')
     }
 
     }, (error) =>{

@@ -45,3 +45,27 @@ p{
 .iconito{
     color: #C7E8F3;
 }
+
+footer{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.footer-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-logos{
+    img{
+        max-width: 40px;
+        max-height: auto;
+        margin: 15px;
+    }
+    img:hover{
+        filter: drop-shadow(0px 0px 5px #f83aa2);
+        transform: scale(1.5);
+        transition: transform 1s;
+    }
+}

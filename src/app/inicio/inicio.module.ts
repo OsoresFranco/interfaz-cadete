@@ -5,6 +5,7 @@ import { InicioRoutingModule } from './inicio-routing.module';
 import { InicioComponent } from './inicio.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { MaterialModule } from '../material/material/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MaterialModule } from '../material/material/material.module';
   imports: [
     CommonModule,
     InicioRoutingModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ]
 })
 export class InicioModule { }

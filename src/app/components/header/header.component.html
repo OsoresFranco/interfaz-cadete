@@ -3,7 +3,11 @@
         <mat-toolbar-row>
           <span><img class="logo-toolbar" src="../../../assets/Logo Color.svg" alt="logo todo it"></span>
           <span class="spacer"></span>
-          <button mat-icon-button class="menu-icon" aria-label="Example icon-button with menu icon">
+          <button mat-icon-button class="menu-icon" [matMenuTriggerFor]="menu" aria-label="menu icon">
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Item 1</button>
+              <button mat-menu-item>Item 2</button>
+            </mat-menu>
             <mat-icon>menu</mat-icon>
           </button>
         </mat-toolbar-row>
