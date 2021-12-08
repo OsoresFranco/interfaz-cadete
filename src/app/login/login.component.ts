@@ -31,20 +31,20 @@ export class LoginComponent {
     this.user = this.loginform.value
     console.log(this.user.email)
     this.loginservice.login (String(this.user.email), String(this.user.password)).subscribe(  resp => {
-      
+    
     if(resp.rol.id === 2){
       Swal.fire(
         `Bienvenido ${resp.fullName}`,
         '',
         'success')
       this.route.navigate(['/inicio'])
-    } else {
-      Swal.fire(
-        'Error al intentar ingresar',
-        'Usuario o contraseña inválido',
-        'error')
     }
 
+    }, (error) =>{
+        Swal.fire(
+          'Error al intentar ingresar',
+          'Usuario o contraseña inválido',
+          'error')
     })
   }
 
