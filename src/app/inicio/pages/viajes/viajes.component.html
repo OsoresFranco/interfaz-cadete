@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<main>
+    <div class="card-container">
+        <mat-accordion class="acordeon" *ngFor="let viaje of dataSource">
+            <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title >
+                {{viaje.id}}
+                </mat-panel-title>
+                <mat-panel-description>
+                Dirección: {{viaje.travelEquipmentDTOs[0].operator.address}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            Horario: {{viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].operationDate.slice(0,10)}}
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</main>
+
+<footer>
+    <a (click)="openBottomSheet()">
+        <img class="menu-icon" src="../../assets/menu.svg" alt="Menu-button">
+    </a>
+</footer>

@@ -7,13 +7,15 @@ import { HeaderComponent } from '../components/header/header.component';
 import { MaterialModule } from '../material/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
+import { ViajesComponent } from './pages/viajes/viajes.component';
 
 
 @NgModule({
   declarations: [
     InicioComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ViajesComponent
   ],
   imports: [
     CommonModule,
