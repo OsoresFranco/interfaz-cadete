@@ -26,11 +26,10 @@ export class ViajesComponent implements OnInit {
   ngOnInit(): void {
     let status1 = this.viajes.fetchViajes(1);
     let status5 = this.viajes.fetchViajes(5);
-    let status10 = this.viajes.fetchViajes(10);
 
-    forkJoin([status1,status5,status10]).subscribe(  resp => {
-      this.dataSource = [...resp[0], ...resp[1], ...resp[2]] 
-      console.log(this.dataSource)
+
+    forkJoin([status1,status5]).subscribe(  resp => {
+      this.dataSource = [...resp[0], ...resp[1]] 
     })
   }
 

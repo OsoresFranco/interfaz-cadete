@@ -8,6 +8,7 @@ import { MaterialModule } from '../material/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { ViajesComponent } from './pages/viajes/viajes.component';
+import { HistorialComponent } from './pages/historial/historial.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ViajesComponent } from './pages/viajes/viajes.component';
     InicioComponent,
     HeaderComponent,
     FooterComponent,
-    ViajesComponent
+    ViajesComponent,
+    HistorialComponent
   ],
   imports: [
     CommonModule,
