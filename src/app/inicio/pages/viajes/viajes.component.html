@@ -16,11 +16,13 @@
                     </mat-expansion-panel-header>
                     Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
                     Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
-                    Estado Del Viaje: {{viaje.lastStatusTravel}}
+                    Estado Del Viaje: {{viaje.lastStatusTravel == 1 ? "Solicitud De Retiro": "Entrega"}} 
+                    <button (click)="takeViaje(viaje.id, viaje.lastStatusTravel)">Tomar Viaje</button>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
         </mat-tab>
+
         <mat-tab label="Viajes en Curso">
             <div class="card-container">
                 <mat-accordion class="acordeon colorizer" *ngFor="let viaje of cadete">
@@ -42,6 +44,8 @@
         </mat-tab>
 
     </mat-tab-group>
+
+    
     
 </main>
 

@@ -27,8 +27,8 @@ export class HistorialComponent implements OnInit {
     let status9 = this.viajes.fetchViajes(9);
 
 
-    forkJoin([status4, status8, status9]).subscribe(  resp => {
-      this.historialViajes = [...resp[0], ...resp[1],...resp[2]];
+    forkJoin([status8, status9, status4]).subscribe(  resp => {
+      this.historialViajes = [...resp[0], ...resp[1], ...resp[2]];
       for (let viaje of this.historialViajes){
       if(viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].cadete ) {
         if (viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].cadete.id === Number(localStorage.getItem('id'))){

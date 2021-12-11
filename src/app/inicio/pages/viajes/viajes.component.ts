@@ -4,6 +4,9 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { ViajesService } from '../../services/viajes.service';
 import { Viajes } from '../../models/viajes';
 import { forkJoin } from 'rxjs';
+import { TomarViajeService } from '../../services/tomar-viaje.service';
+import { TomarViajes } from '../../models/tomarViajes';
+
 
 
 @Component({
@@ -15,7 +18,7 @@ import { forkJoin } from 'rxjs';
 
 export class ViajesComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet, private viajes:ViajesService) {}
+  constructor(private _bottomSheet: MatBottomSheet, private viajes:ViajesService, private tomaViaje:TomarViajeService) {}
 
   openBottomSheet(): void {
     this._bottomSheet.open(FooterComponent);
@@ -25,6 +28,15 @@ export class ViajesComponent implements OnInit {
   viajesEnCurso:Viajes[] = []
   cadete:Viajes[] = []
   
+  // Opcion Tomar viaje de CADETE
+  // La función envia solo 2 parametros que toma directamente del renderizado de las cards, el service se encarga de poner los datos donde corresponde
+
+    takeViaje(travel:number, statusTravel:number){
+      this.tomaViaje.postViaje(travel,statusTravel).subscribe(resp=>{
+      })
+    }
+
+
   ngOnInit(): void {
 
 // Viajes Disponibles
@@ -49,16 +61,12 @@ export class ViajesComponent implements OnInit {
       this.viajesEnCurso = [...resp[0], ...resp[1],...resp[2],...resp[3]];
       for (let viaje of this.viajesEnCurso){
       if(viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].cadete ) {
-        if ((viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].cadete.id === Number(localStorage.getItem('id'))) && (viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].statusTravel != 10)){
+        if ((viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].cadete.id === Number(localStorage. getItem('id'))) && (viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].statusTravel != 10)) {
           this.cadete.push(viaje)
           } 
         }
       }
 
     })
-
   }
-
-
-
 }
