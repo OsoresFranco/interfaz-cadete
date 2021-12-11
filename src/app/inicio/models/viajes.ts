@@ -7,7 +7,9 @@ export interface Viajes {
         id: number,
         operationDate: string,
         observation: string | null,
-        cadete: string | null,
+        cadete: {
+          id: number | null 
+        },
         operator: {
           id: number,
           email: string,

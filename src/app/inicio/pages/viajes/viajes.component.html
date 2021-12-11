@@ -1,23 +1,48 @@
 <app-header></app-header>
 
 <main>
-    <div class="card-container">
-        <mat-accordion class="acordeon colorizer" *ngFor="let viaje of dataSource">
-            <mat-expansion-panel class="colorizer" hideToggle>
-            <mat-expansion-panel-header>
-                <mat-panel-title >
-                Horario<br> {{viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].operationDate.slice(11,16)}}
-                </mat-panel-title>
-                <mat-panel-description>
-                Dirección: {{viaje.travelEquipmentDTOs[0].operator.address}}
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
-            Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
-            Estado Del Viaje: {{viaje.lastStatusTravel}}
-            </mat-expansion-panel>
-        </mat-accordion>
-    </div>
+    <mat-tab-group class="tabs">
+        <mat-tab label="Viajes Disponibles">
+            <div class="card-container">
+                <mat-accordion class="acordeon colorizer" *ngFor="let viaje of viajesDisponibles">
+                    <mat-expansion-panel class="colorizer" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title >
+                        Horario<br> {{viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].operationDate.slice(11,16)}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                        Dirección: {{viaje.travelEquipmentDTOs[0].operator.address}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
+                    Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
+                    Estado Del Viaje: {{viaje.lastStatusTravel}}
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </mat-tab>
+        <mat-tab label="Viajes en Curso">
+            <div class="card-container">
+                <mat-accordion class="acordeon colorizer" *ngFor="let viaje of cadete">
+                    <mat-expansion-panel class="colorizer" hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title >
+                        Horario<br> {{viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].operationDate.slice(11,16)}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                        Dirección: {{viaje.travelEquipmentDTOs[0].operator.address}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
+                    Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
+                    Estado Del Viaje: {{viaje.lastStatusTravel}}
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </mat-tab>
+
+    </mat-tab-group>
+    
 </main>
 
 <footer>

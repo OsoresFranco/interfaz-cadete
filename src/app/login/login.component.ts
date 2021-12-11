@@ -36,6 +36,7 @@ export class LoginComponent {
         `Bienvenido ${resp.fullName}`,
         '',
         'success')
+      localStorage.setItem('id', JSON.stringify(resp.id));
       this.route.navigate(['/inicio'])
     } else {
       Swal.fire(
