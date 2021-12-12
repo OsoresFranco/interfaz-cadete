@@ -63,6 +63,32 @@ export class ViajesComponent implements OnInit {
       })
     }
 
+
+// Opcion Equipo Retirado (pick Viaje)
+  pickViaje(travel:number, statusTravel:number){
+    Swal.fire({
+      title: 'Confirmar el Retiro del Equipo',
+      text: "Una vez confirmado no podrás renunciar al mismo",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, confirmar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.tomaViaje.postViaje(travel,statusTravel).subscribe(resp=>{
+          Swal.fire(
+            'Has confirmado el retiro!',
+            'Conduce con cuidado',
+            'success'
+          )
+        })
+      }
+    })
+  }
+
+
   ngOnInit(): void {
 
 // Viajes Disponibles
