@@ -53,6 +53,7 @@ export class ViajesComponent implements OnInit {
     }
 
 // Opcion Renunciar Viaje
+
     deleteViaje(travel:number, statusTravel:number){
       this.renunciaViaje.deleteViaje(travel,statusTravel).subscribe(resp=>{
         Swal.fire(
@@ -65,7 +66,8 @@ export class ViajesComponent implements OnInit {
 
 
 // Opcion Equipo Retirado (pick Viaje)
-  pickViaje(travel:number, statusTravel:number){
+
+    pickViaje(travel:number, statusTravel:number){
     Swal.fire({
       title: 'Confirmar el Retiro del Equipo',
       text: "Una vez confirmado no podrás renunciar al mismo",
@@ -87,6 +89,30 @@ export class ViajesComponent implements OnInit {
       }
     })
   }
+
+// Opcion confirmar entrega (Finish Viaje)
+    finishViaje(travel:number, statusTravel:number){
+      Swal.fire({
+        title: 'Has entregado el equipo a su destino?',
+        text: "No podrás deshacer esta acción",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, confirmar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.tomaViaje.postViaje(travel,statusTravel).subscribe(resp=>{
+            Swal.fire(
+              'Excelente trabajo!',
+              'Pronto podrás ver este viaje en tu historial',
+              'success'
+            )
+          })
+        }
+      })
+    }
 
 
   ngOnInit(): void {

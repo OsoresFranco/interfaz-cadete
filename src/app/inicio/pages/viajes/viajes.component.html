@@ -37,9 +37,14 @@
                     </mat-expansion-panel-header>
                     Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
                     Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
-                    Estado Del Viaje: {{viaje.lastStatusTravel}}
-                    <button class="renunciar-viaje" (click)="deleteViaje(viaje.id, viaje.lastStatusTravel)">Renunciar Viaje</button>
-                    <button class="equipo-retirado" (click)="pickViaje(viaje.id, viaje.lastStatusTravel)">Equipo Retirado</button>
+                    Estado Del Viaje: {{viaje.lastStatusTravel}} <br>
+
+                    <button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="renunciar-viaje" (click)="deleteViaje(viaje.id, viaje.lastStatusTravel)">Renunciar Viaje</button>
+
+                    <button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="equipo-retirado" (click)="pickViaje(viaje.id, viaje.lastStatusTravel)">Equipo Retirado</button>
+
+                    <button *ngIf="(viaje.lastStatusTravel==3)||(viaje.lastStatusTravel==7)" class="equipo-entregado" (click)="finishViaje(viaje.id, viaje.lastStatusTravel)">Confirmar Entrega</button>
+
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
