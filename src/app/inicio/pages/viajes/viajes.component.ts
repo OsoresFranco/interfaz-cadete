@@ -5,7 +5,9 @@ import { ViajesService } from '../../services/viajes.service';
 import { Viajes } from '../../models/viajes';
 import { forkJoin } from 'rxjs';
 import { TomarViajeService } from '../../services/tomar-viaje.service';
-import { TomarViajes } from '../../models/tomarViajes';
+import Swal from 'sweetalert2';
+import { RenunciarViajeService } from '../../services/renunciar-viaje.service';
+
 
 
 
@@ -18,7 +20,7 @@ import { TomarViajes } from '../../models/tomarViajes';
 
 export class ViajesComponent implements OnInit {
 
-  constructor(private _bottomSheet: MatBottomSheet, private viajes:ViajesService, private tomaViaje:TomarViajeService) {}
+  constructor(private _bottomSheet: MatBottomSheet, private viajes:ViajesService, private tomaViaje:TomarViajeService, private renunciaViaje:RenunciarViajeService) {}
 
   openBottomSheet(): void {
     this._bottomSheet.open(FooterComponent);
@@ -32,10 +34,34 @@ export class ViajesComponent implements OnInit {
   // La función envia solo 2 parametros que toma directamente del renderizado de las cards, el service se encarga de poner los datos donde corresponde
 
     takeViaje(travel:number, statusTravel:number){
+      if(this.cadete.length >= 4){
+        Swal.fire(
+          'Hubo un error',
+          'No puedes tomar mas de 4 Viajes al mismo tiempo',
+          'error'
+        )
+      } else
+      {
       this.tomaViaje.postViaje(travel,statusTravel).subscribe(resp=>{
+        Swal.fire(
+          'Excelente, el pedido es tuyo!',
+          'No olvide usar mascarilla y desinfectar tus manos',
+          'success'
+        )
       })
+      }
     }
 
+// Opcion Renunciar Viaje
+    deleteViaje(travel:number, statusTravel:number){
+      this.renunciaViaje.deleteViaje(travel,statusTravel).subscribe(resp=>{
+        Swal.fire(
+          'Has Renunciado a este pedido',
+          'El pedido ya no está en curso para tí',
+          'info'
+        )
+      })
+    }
 
   ngOnInit(): void {
 

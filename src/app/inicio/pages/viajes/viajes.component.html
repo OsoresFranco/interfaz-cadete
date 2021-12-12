@@ -5,19 +5,19 @@
         <mat-tab label="Viajes Disponibles">
             <div class="card-container">
                 <mat-accordion class="acordeon colorizer" *ngFor="let viaje of viajesDisponibles">
-                    <mat-expansion-panel class="colorizer" hideToggle>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title >
-                        Horario<br> {{viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].operationDate.slice(11,16)}}
-                        </mat-panel-title>
-                        <mat-panel-description>
-                        Dirección: {{viaje.travelEquipmentDTOs[0].operator.address}}
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
+                    <mat-expansion-panel class="expansion colorizer" hideToggle>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title >
+                            Horario<br> {{viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].operationDate.slice(11,16)}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                            Dirección: {{viaje.travelEquipmentDTOs[0].operator.address}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
                     Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
                     Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
                     Estado Del Viaje: {{viaje.lastStatusTravel == 1 ? "Solicitud De Retiro": "Entrega"}} 
-                    <button (click)="takeViaje(viaje.id, viaje.lastStatusTravel)">Tomar Viaje</button>
+                    <button class="tomar-viaje" (click)="takeViaje(viaje.id, viaje.lastStatusTravel)">Tomar Viaje</button>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
@@ -38,6 +38,7 @@
                     Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
                     Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
                     Estado Del Viaje: {{viaje.lastStatusTravel}}
+                    <button class="renunciar-viaje" (click)="deleteViaje(viaje.id, viaje.lastStatusTravel)">Renunciar Viaje</button>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
