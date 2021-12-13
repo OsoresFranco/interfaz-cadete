@@ -7,7 +7,7 @@
                 <mat-accordion class="acordeon colorizer" *ngFor="let viaje of viajesDisponibles">
                     <mat-expansion-panel class="expansion colorizer" hideToggle>
                         <mat-expansion-panel-header>
-                            <mat-panel-title >
+                            <mat-panel-title class="titulo">
                             Horario<br> {{viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].operationDate.slice(11,16)}}
                             </mat-panel-title>
                             <mat-panel-description>
@@ -16,9 +16,9 @@
                         </mat-expansion-panel-header>
                         Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
                         Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
-                        Estado Del Viaje: {{viaje.lastStatusTravel == 1 ? "Solicitud De Retiro": "Entrega"}} 
+                        Pedido: {{viaje.lastStatusTravel | pipes}} 
                         <mat-action-row>     
-                            <button class="tomar-viaje" (click)="takeViaje(viaje.id, viaje.lastStatusTravel)">Tomar Viaje</button>
+                            <button style="background-color:#4376a0;" mat-raised-button class="tomar-viaje" (click)="takeViaje(viaje.id, viaje.lastStatusTravel)">Tomar Viaje</button>
                         </mat-action-row>
                     </mat-expansion-panel>
                 </mat-accordion>
@@ -40,13 +40,15 @@
                     </mat-expansion-panel-header>
                     Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
                     Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
-                    Estado Del Viaje: {{viaje.lastStatusTravel}} <br>
+                    Estado Del Viaje: {{viaje.lastStatusTravel | pipes}} <br>
                     <mat-action-row>
-                        <button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="renunciar-viaje" (click)="deleteViaje(viaje.id, viaje.lastStatusTravel)">Renunciar Viaje</button>
+                        <button style="background-color:#4376a0;" mat-raised-button type="image" src="../../../../assets/renunciar.svg" *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="renunciar-viaje" (click)="deleteViaje(viaje.id, viaje.lastStatusTravel)"> Renunciar Viaje
+                        </button>
 
-                        <button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="equipo-retirado" (click)="pickViaje(viaje.id, viaje.lastStatusTravel)">Equipo Retirado</button>
+                        <button style="background-color:#4376a0;" mat-raised-button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="equipo-retirado" (click)="pickViaje(viaje.id, viaje.lastStatusTravel)">Equipo Retirado
+                        </button>
 
-                        <button *ngIf="(viaje.lastStatusTravel==3)||(viaje.lastStatusTravel==7)" class="equipo-entregado" (click)="finishViaje(viaje.id, viaje.lastStatusTravel)">Confirmar Entrega</button>
+                        <button style="background-color:#4376a0;" color="#4376a0" class="botonExpasion" mat-raised-button *ngIf="(viaje.lastStatusTravel==3)||(viaje.lastStatusTravel==7)" class="equipo-entregado" (click)="finishViaje(viaje.id, viaje.lastStatusTravel)">Confirmar Entrega</button>
                     </mat-action-row>
                     </mat-expansion-panel>
                 </mat-accordion>

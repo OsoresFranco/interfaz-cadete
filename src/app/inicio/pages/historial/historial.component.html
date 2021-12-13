@@ -13,7 +13,7 @@
             </mat-expansion-panel-header>
             Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
             Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
-            Estado Del Viaje: {{viaje.lastStatusTravel}}
+            Estado Del Viaje: {{viaje.lastStatusTravel | pipes}}
             </mat-expansion-panel>
         </mat-accordion>
     </div>

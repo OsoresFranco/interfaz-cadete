@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
 import { ViajesComponent } from './pages/viajes/viajes.component';
 import { HistorialComponent } from './pages/historial/historial.component';
+import { PipesPipe } from './pipes.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HistorialComponent } from './pages/historial/historial.component';
     HeaderComponent,
     FooterComponent,
     ViajesComponent,
-    HistorialComponent
+    HistorialComponent,
+    PipesPipe
   ],
   imports: [
     CommonModule,
