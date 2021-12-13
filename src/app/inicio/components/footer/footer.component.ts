@@ -15,4 +15,8 @@ export class FooterComponent  {
     event.preventDefault();
   }
 
+  logout(){
+    localStorage.clear();
+  }
+
 }
