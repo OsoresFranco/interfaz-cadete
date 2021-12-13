@@ -29,7 +29,7 @@ export class ViajesComponent implements OnInit {
   viajesDisponibles:Viajes[] = []
   viajesEnCurso:Viajes[] = []
   cadete:Viajes[] = []
-  
+
   // Opcion Tomar viaje de CADETE
   // La función envia solo 2 parametros que toma directamente del renderizado de las cards, el service se encarga de poner los datos donde corresponde
 
@@ -47,7 +47,8 @@ export class ViajesComponent implements OnInit {
           'Excelente, el pedido es tuyo!',
           'No olvide usar mascarilla y desinfectar tus manos',
           'success'
-        )
+        );
+        this.ngOnInit();
       })
       }
     }
@@ -60,7 +61,8 @@ export class ViajesComponent implements OnInit {
           'Has Renunciado a este pedido',
           'El pedido ya no está en curso para tí',
           'info'
-        )
+        );
+        this.ngOnInit();
       })
     }
 
@@ -84,7 +86,8 @@ export class ViajesComponent implements OnInit {
             'Has confirmado el retiro!',
             'Conduce con cuidado',
             'success'
-          )
+          );
+          this.ngOnInit();
         })
       }
     })
@@ -108,12 +111,12 @@ export class ViajesComponent implements OnInit {
               'Excelente trabajo!',
               'Pronto podrás ver este viaje en tu historial',
               'success'
-            )
+            );
+            this.ngOnInit();
           })
         }
       })
     }
-
 
   ngOnInit(): void {
 
@@ -129,13 +132,14 @@ export class ViajesComponent implements OnInit {
 
 
 // Viajes Disponibles
-    forkJoin([status1,status5]).subscribe(  resp => {
+  forkJoin([status1,status5]).subscribe(  resp => {
       this.viajesDisponibles = [...resp[0], ...resp[1]] 
     })
 
 
 // Viajes En Curso
     forkJoin([status2, status3, status6, status7]).subscribe(  resp => {
+      this.cadete = [];
       this.viajesEnCurso = [...resp[0], ...resp[1],...resp[2],...resp[3]];
       for (let viaje of this.viajesEnCurso){
       if(viaje.travelEquipmentDTOs[viaje.travelEquipmentDTOs.length-1].cadete ) {
