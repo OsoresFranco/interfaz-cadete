@@ -56,14 +56,27 @@ export class ViajesComponent implements OnInit {
 // Opcion Renunciar Viaje
 
     deleteViaje(travel:number, statusTravel:number){
-      this.renunciaViaje.deleteViaje(travel,statusTravel).subscribe(resp=>{
-        Swal.fire(
-          'Has Renunciado a este pedido',
-          'El pedido ya no está en curso para tí',
-          'info'
-        );
-        this.ngOnInit();
-      })
+        Swal.fire({
+          title: 'Deseas renunciar a este viaje?',
+          text: "Una vez renunciado no podrás deshacer esta acción.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si, renunciar',
+          cancelButtonText: 'Cancelar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.renunciaViaje.deleteViaje(travel,statusTravel).subscribe(resp=>{
+              Swal.fire(
+                'Has renunciado a este viaje!',
+                'Visita viajes disponibles para obtener uno nuevo',
+                'success'
+              );
+              this.ngOnInit();
+            })
+          }
+        })
     }
 
 

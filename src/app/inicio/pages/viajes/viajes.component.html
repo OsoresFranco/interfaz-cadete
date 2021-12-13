@@ -14,15 +14,18 @@
                             Dirección: {{viaje.travelEquipmentDTOs[0].operator.address}}
                             </mat-panel-description>
                         </mat-expansion-panel-header>
-                    Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
-                    Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
-                    Estado Del Viaje: {{viaje.lastStatusTravel == 1 ? "Solicitud De Retiro": "Entrega"}} 
-                    <button class="tomar-viaje" (click)="takeViaje(viaje.id, viaje.lastStatusTravel)">Tomar Viaje</button>
+                        Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
+                        Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
+                        Estado Del Viaje: {{viaje.lastStatusTravel == 1 ? "Solicitud De Retiro": "Entrega"}} 
+                        <mat-action-row>     
+                            <button class="tomar-viaje" (click)="takeViaje(viaje.id, viaje.lastStatusTravel)">Tomar Viaje</button>
+                        </mat-action-row>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
         </mat-tab>
 
+<!-- Sección Viajes en Curso-->
         <mat-tab label="Viajes en Curso">
             <div class="card-container">
                 <mat-accordion class="acordeon colorizer" *ngFor="let viaje of cadete">
@@ -38,13 +41,13 @@
                     Nombre: {{viaje.travelEquipmentDTOs[0].operator.fullName}} <br>
                     Equipo: {{viaje.travelEquipmentDTOs[0].equipment.mark}} {{viaje.travelEquipmentDTOs[0].equipment.model}} <br>
                     Estado Del Viaje: {{viaje.lastStatusTravel}} <br>
+                    <mat-action-row>
+                        <button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="renunciar-viaje" (click)="deleteViaje(viaje.id, viaje.lastStatusTravel)">Renunciar Viaje</button>
 
-                    <button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="renunciar-viaje" (click)="deleteViaje(viaje.id, viaje.lastStatusTravel)">Renunciar Viaje</button>
+                        <button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="equipo-retirado" (click)="pickViaje(viaje.id, viaje.lastStatusTravel)">Equipo Retirado</button>
 
-                    <button *ngIf="(viaje.lastStatusTravel==2)||(viaje.lastStatusTravel==6)" class="equipo-retirado" (click)="pickViaje(viaje.id, viaje.lastStatusTravel)">Equipo Retirado</button>
-
-                    <button *ngIf="(viaje.lastStatusTravel==3)||(viaje.lastStatusTravel==7)" class="equipo-entregado" (click)="finishViaje(viaje.id, viaje.lastStatusTravel)">Confirmar Entrega</button>
-
+                        <button *ngIf="(viaje.lastStatusTravel==3)||(viaje.lastStatusTravel==7)" class="equipo-entregado" (click)="finishViaje(viaje.id, viaje.lastStatusTravel)">Confirmar Entrega</button>
+                    </mat-action-row>
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
